@@ -13,6 +13,7 @@ import com.driver.repository.TripBookingRepository;
 import com.driver.model.TripStatus;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -49,10 +50,13 @@ public class CustomerServiceImpl implements CustomerService {
 		if(drivers.isEmpty()){
 			throw new Exception("No cab available!");
 		}
+		//Collections.sort(drivers);
+		Collections.sort(drivers, (a, b)->a.getDriverId()-b.getDriverId());
 		Driver getDriver = null;
 		for(Driver driver: drivers){
 			if(driver.getCab().getAvailable()){
 				getDriver = driver;
+				break;
 			}
 		}
 		if(getDriver==null){

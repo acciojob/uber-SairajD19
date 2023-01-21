@@ -25,7 +25,7 @@ public class Driver {
     public Driver(String mobile, String password) {
         this.mobile = mobile;
         this.password = password;
-        this.setTripBookings(new ArrayList<>());
+        this.setTripBookings(new ArrayList<TripBooking>());
     }
 
     public Driver() {
