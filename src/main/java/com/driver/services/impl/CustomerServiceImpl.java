@@ -49,14 +49,13 @@ public class CustomerServiceImpl implements CustomerService {
 		if(drivers.isEmpty()){
 			throw new Exception("No cab available");
 		}
-		Driver getDriver = drivers.get(0);
-		int driverId = getDriver.getDriverId();
+		Driver getDriver = null;
 		for(Driver driver: drivers){
-			if(driver.getCab().getAvailable() && driver.getDriverId()<driverId){
+			if(driver.getCab().getAvailable()){
 				getDriver = driver;
 			}
 		}
-		if(!getDriver.getCab().getAvailable()){
+		if(getDriver==null){
 			throw new Exception("No cab available");
 		}
 
@@ -68,6 +67,7 @@ public class CustomerServiceImpl implements CustomerService {
 		newTrip.setFromLocation(fromLocation);
 		newTrip.setToLocation(toLocation);
 		newTrip.setDistanceInKm(distanceInKm);
+		newTrip.setBill(getDriver.getCab().getPerKmRate()*distanceInKm);
 		newTrip.setStatus(TripStatus.CONFIRMED);
 
 		getDriver.getTripBookings().add(newTrip);
