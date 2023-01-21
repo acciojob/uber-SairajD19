@@ -20,12 +20,12 @@ public class Driver {
     private Cab cab;
 
     @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
-    private List<TripBooking> tripBookings;
+    private List<TripBooking> tripBookings = new ArrayList<>();
 
     public Driver(String mobile, String password) {
         this.mobile = mobile;
         this.password = password;
-        this.setTripBookings(new ArrayList<TripBooking>());
+        //this.setTripBookings(new ArrayList<TripBooking>());
     }
 
     public Driver() {
