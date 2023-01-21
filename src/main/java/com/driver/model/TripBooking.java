@@ -29,7 +29,7 @@ public class TripBooking {
     @Enumerated(value = EnumType.STRING)
     private TripStatus tripStatus;
 
-    public TripStatus getTripStatus() {
+    public TripStatus getStatus() {
         return tripStatus;
     }
 

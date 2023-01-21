@@ -52,11 +52,11 @@ public class CustomerServiceImpl implements CustomerService {
 		Driver getDriver = drivers.get(0);
 		int driverId = getDriver.getDriverId();
 		for(Driver driver: drivers){
-			if(driver.getCab().isAvailable() && driver.getDriverId()<driverId){
+			if(driver.getCab().getAvailable() && driver.getDriverId()<driverId){
 				getDriver = driver;
 			}
 		}
-		if(!getDriver.getCab().isAvailable()){
+		if(!getDriver.getCab().getAvailable()){
 			throw new Exception("No cab available");
 		}
 
