@@ -22,17 +22,23 @@ public class DriverServiceImpl implements DriverService {
 	public void register(String mobile, String password){
 		//Save a driver in the database having given details and a cab with ratePerKm as 10 and availability as True by default.
 
+		Driver driver = new Driver(mobile, password);
+		Cab cab = new Cab(10);
+		driverRepository3.save(driver);
+		cabRepository3.save(cab);
 	}
 
 	@Override
 	public void removeDriver(int driverId){
 		// Delete driver without using deleteById function
+		Driver driver = driverRepository3.findById(driverId).get();
+		driverRepository3.delete(driver);
 
 	}
 
 	@Override
 	public void updateStatus(int driverId){
 		//Set the status of respective car to unavailable
-
+		driverRepository3.findById(driverId).get().getCab().setAvailable(false);
 	}
 }
