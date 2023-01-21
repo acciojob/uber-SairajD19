@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class TripBooking {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int tripBookingId;
 
     private String fromLocation;
@@ -40,14 +40,13 @@ public class TripBooking {
     public TripBooking() {
     }
 
-    public TripBooking(int tripBookingId, String fromLocation, String toLocation, int distanceInKm, int bill, Driver driver, Customer customer) {
-        this.tripBookingId = tripBookingId;
+    public TripBooking(String fromLocation, String toLocation, int distanceInKm, int bill) {
+
         this.fromLocation = fromLocation;
         this.toLocation = toLocation;
         this.distanceInKm = distanceInKm;
         this.bill = bill;
-        this.driver = driver;
-        this.customer = customer;
+
     }
 
     public int getTripBookingId() {
