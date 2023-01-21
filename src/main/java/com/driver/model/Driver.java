@@ -1,6 +1,7 @@
 package com.driver.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,7 @@ public class Driver {
     public Driver(String mobile, String password) {
         this.mobile = mobile;
         this.password = password;
+        this.setTripBookings(new ArrayList<>());
     }
 
     public Driver() {
