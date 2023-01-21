@@ -23,6 +23,9 @@ public class Customer {
         this.password = password;
     }
 
+    public Customer() {
+    }
+
     public int getCustomerId() {
         return customerId;
     }
