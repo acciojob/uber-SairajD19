@@ -47,7 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
 		//Avoid using SQL query
 		List<Driver> drivers = driverRepository2.findAll();
 		if(drivers.isEmpty()){
-			throw new Exception("No cab available");
+			throw new Exception("No cab available!");
 		}
 		Driver getDriver = null;
 		for(Driver driver: drivers){
@@ -56,7 +56,7 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 		}
 		if(getDriver==null){
-			throw new Exception("No cab available");
+			throw new Exception("No cab available!");
 		}
 
 		getDriver.getCab().setAvailable(false);
@@ -85,6 +85,10 @@ public class CustomerServiceImpl implements CustomerService {
 		trip.setStatus(TripStatus.CANCELED);
 		trip.getDriver().getCab().setAvailable(true);
 		//trip.getDriver().getTripBookings().remove(trip);
+		trip.setBill(0);
+		trip.setToLocation(null);
+		trip.setFromLocation(null);
+		trip.setDistanceInKm(0);
 		tripBookingRepository2.save(trip);
 
 
